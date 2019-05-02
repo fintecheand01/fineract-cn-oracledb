@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
-import org.apache.fineract.cn.mariadb.domain.ContextAwareRoutingDataSource;
-import org.apache.fineract.cn.mariadb.util.JdbcUrlBuilder;
-import org.apache.fineract.cn.mariadb.util.MariaDBConstants;
+import org.apache.fineract.cn.oracledb.domain.ContextAwareRoutingDataSource;
+import org.apache.fineract.cn.oracledb.util.JdbcUrlBuilder;
+import org.apache.fineract.cn.oracledb.util.OracleDBConstants;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,13 +32,13 @@ import java.util.HashMap;
 
 @SuppressWarnings("WeakerAccess")
 @Configuration
-@ConditionalOnProperty(prefix = "mariadb", name = "enabled", matchIfMissing = true)
-public class MariaDBTenantBasedJavaConfiguration {
+@ConditionalOnProperty(prefix = "oracledb", name = "enabled", matchIfMissing = true)
+public class OracleDBTenantBasedJavaConfiguration {
   @Bean
-  public DataSource dataSource(@Qualifier(MariaDBConstants.LOGGER_NAME) final Logger logger,
+  public DataSource dataSource(@Qualifier(OracleDBConstants.LOGGER_NAME) final Logger logger,
                                final MetaDataSourceWrapper metaDataSource) {
 
-    final ContextAwareRoutingDataSource dataSource = new ContextAwareRoutingDataSource(logger, JdbcUrlBuilder.DatabaseType.MARIADB);
+    final ContextAwareRoutingDataSource dataSource = new ContextAwareRoutingDataSource(logger, JdbcUrlBuilder.DatabaseType.ORACLEDB);
     dataSource.setMetaDataSource(metaDataSource.getMetaDataSource());
     final HashMap<Object, Object> targetDataSources = new HashMap<>();
     dataSource.setTargetDataSources(targetDataSources);

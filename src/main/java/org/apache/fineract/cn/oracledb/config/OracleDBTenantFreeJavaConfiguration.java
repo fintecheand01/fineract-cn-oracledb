@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -30,8 +30,8 @@ import javax.sql.DataSource;
  */
 @SuppressWarnings("WeakerAccess")
 @Configuration
-@ConditionalOnProperty(prefix = "mariadb", name = "enabled", matchIfMissing = true)
-public class MariaDBTenantFreeJavaConfiguration {
+@ConditionalOnProperty(prefix = "oracledb", name = "enabled", matchIfMissing = true)
+public class OracleDBTenantFreeJavaConfiguration {
   @Bean
   public DataSource dataSource(final MetaDataSourceWrapper metaDataSource) {
     return metaDataSource.getMetaDataSource();

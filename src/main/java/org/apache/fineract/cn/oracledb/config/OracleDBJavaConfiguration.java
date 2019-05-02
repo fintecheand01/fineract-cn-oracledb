@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
 
 import com.jolbox.bonecp.BoneCPDataSource;
-import org.apache.fineract.cn.mariadb.domain.FlywayFactoryBean;
-import org.apache.fineract.cn.mariadb.util.JdbcUrlBuilder;
-import org.apache.fineract.cn.mariadb.util.MariaDBConstants;
+import org.apache.fineract.cn.oracledb.domain.FlywayFactoryBean;
+import org.apache.fineract.cn.oracledb.util.JdbcUrlBuilder;
+import org.apache.fineract.cn.oracledb.util.OracleDBConstants;
 import org.apache.fineract.cn.lang.ApplicationName;
 import org.apache.fineract.cn.lang.config.EnableApplicationName;
 import org.slf4j.Logger;
@@ -46,22 +46,22 @@ import java.util.Properties;
 
 @SuppressWarnings("WeakerAccess")
 @Configuration
-@ConditionalOnProperty(prefix = "mariadb", name = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "oracledb", name = "enabled", matchIfMissing = true)
 @EnableTransactionManagement
 @EnableApplicationName
-public class MariaDBJavaConfiguration {
+public class OracleDBJavaConfiguration {
 
   private final Environment env;
 
   @Autowired
-  public MariaDBJavaConfiguration(final Environment env) {
+  public OracleDBJavaConfiguration(final Environment env) {
     super();
     this.env = env;
   }
 
-  @Bean(name = MariaDBConstants.LOGGER_NAME)
+  @Bean(name = OracleDBConstants.LOGGER_NAME)
   public Logger logger() {
-    return LoggerFactory.getLogger(MariaDBConstants.LOGGER_NAME);
+    return LoggerFactory.getLogger(OracleDBConstants.LOGGER_NAME);
   }
 
   @Bean
@@ -100,31 +100,31 @@ public class MariaDBJavaConfiguration {
 
     final BoneCPDataSource boneCPDataSource = new BoneCPDataSource();
     boneCPDataSource.setDriverClass(
-            this.env.getProperty(MariaDBConstants.MARIADB_DRIVER_CLASS_PROP, MariaDBConstants.MARIADB_DRIVER_CLASS_DEFAULT));
+            this.env.getProperty(OracleDBConstants.ORACLEDB_DRIVER_CLASS_PROP, OracleDBConstants.ORACLEDB_DRIVER_CLASS_DEFAULT));
     boneCPDataSource.setJdbcUrl(JdbcUrlBuilder
-            .create(JdbcUrlBuilder.DatabaseType.MARIADB)
-            .host(this.env.getProperty(MariaDBConstants.MARIADB_HOST_PROP, MariaDBConstants.MARIADB_HOST_DEFAULT))
-            .port(this.env.getProperty(MariaDBConstants.MARIADB_PORT_PROP, MariaDBConstants.MARIADB_PORT_DEFAULT))
-            .instanceName(this.env.getProperty(MariaDBConstants.MARIADB_DATABASE_NAME_PROP, MariaDBConstants.MARIADB_DATABASE_NAME_DEFAULT))
+            .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
+            .host(this.env.getProperty(OracleDBConstants.ORACLEDB_HOST_PROP, OracleDBConstants.ORACLEDB_HOST_DEFAULT))
+            .port(this.env.getProperty(OracleDBConstants.ORACLEDB_PORT_PROP, OracleDBConstants.ORACLEDB_PORT_DEFAULT))
+            .instanceName(this.env.getProperty(OracleDBConstants.ORACLEDB_DATABASE_NAME_PROP, OracleDBConstants.ORACLEDB_DATABASE_NAME_DEFAULT))
             .build());
     boneCPDataSource.setUsername(
-            this.env.getProperty(MariaDBConstants.MARIADB_USER_PROP, MariaDBConstants.MARIADB_USER_DEFAULT));
+            this.env.getProperty(OracleDBConstants.ORACLEDB_USER_PROP, OracleDBConstants.ORACLEDB_USER_DEFAULT));
     boneCPDataSource.setPassword(
-            this.env.getProperty(MariaDBConstants.MARIADB_PASSWORD_PROP, MariaDBConstants.MARIADB_PASSWORD_DEFAULT));
+            this.env.getProperty(OracleDBConstants.ORACLEDB_PASSWORD_PROP, OracleDBConstants.ORACLEDB_PASSWORD_DEFAULT));
     boneCPDataSource.setIdleConnectionTestPeriodInMinutes(
-            Long.valueOf(this.env.getProperty(MariaDBConstants.BONECP_IDLE_CONNECTION_TEST_PROP, MariaDBConstants.BONECP_IDLE_CONNECTION_TEST_DEFAULT)));
+            Long.valueOf(this.env.getProperty(OracleDBConstants.BONECP_IDLE_CONNECTION_TEST_PROP, OracleDBConstants.BONECP_IDLE_CONNECTION_TEST_DEFAULT)));
     boneCPDataSource.setIdleMaxAgeInMinutes(
-            Long.valueOf(this.env.getProperty(MariaDBConstants.BONECP_IDLE_MAX_AGE_PROP, MariaDBConstants.BONECP_IDLE_MAX_AGE_DEFAULT)));
+            Long.valueOf(this.env.getProperty(OracleDBConstants.BONECP_IDLE_MAX_AGE_PROP, OracleDBConstants.BONECP_IDLE_MAX_AGE_DEFAULT)));
     boneCPDataSource.setMaxConnectionsPerPartition(
-            Integer.valueOf(this.env.getProperty(MariaDBConstants.BONECP_MAX_CONNECTION_PARTITION_PROP, MariaDBConstants.BONECP_MAX_CONNECTION_PARTITION_DEFAULT)));
+            Integer.valueOf(this.env.getProperty(OracleDBConstants.BONECP_MAX_CONNECTION_PARTITION_PROP, OracleDBConstants.BONECP_MAX_CONNECTION_PARTITION_DEFAULT)));
     boneCPDataSource.setMinConnectionsPerPartition(
-            Integer.valueOf(this.env.getProperty(MariaDBConstants.BONECP_MIN_CONNECTION_PARTITION_PROP, MariaDBConstants.BONECP_MIN_CONNECTION_PARTITION_DEFAULT)));
+            Integer.valueOf(this.env.getProperty(OracleDBConstants.BONECP_MIN_CONNECTION_PARTITION_PROP, OracleDBConstants.BONECP_MIN_CONNECTION_PARTITION_DEFAULT)));
     boneCPDataSource.setPartitionCount(
-            Integer.valueOf(this.env.getProperty(MariaDBConstants.BONECP_PARTITION_COUNT_PROP, MariaDBConstants.BONECP_PARTITION_COUNT_DEFAULT)));
+            Integer.valueOf(this.env.getProperty(OracleDBConstants.BONECP_PARTITION_COUNT_PROP, OracleDBConstants.BONECP_PARTITION_COUNT_DEFAULT)));
     boneCPDataSource.setAcquireIncrement(
-            Integer.valueOf(this.env.getProperty(MariaDBConstants.BONECP_ACQUIRE_INCREMENT_PROP, MariaDBConstants.BONECP_ACQUIRE_INCREMENT_DEFAULT)));
+            Integer.valueOf(this.env.getProperty(OracleDBConstants.BONECP_ACQUIRE_INCREMENT_PROP, OracleDBConstants.BONECP_ACQUIRE_INCREMENT_DEFAULT)));
     boneCPDataSource.setStatementsCacheSize(
-            Integer.valueOf(this.env.getProperty(MariaDBConstants.BONECP_STATEMENT_CACHE_PROP, MariaDBConstants.BONECP_STATEMENT_CACHE_DEFAULT)));
+            Integer.valueOf(this.env.getProperty(OracleDBConstants.BONECP_STATEMENT_CACHE_PROP, OracleDBConstants.BONECP_STATEMENT_CACHE_DEFAULT)));
 
     final Properties driverProperties = new Properties();
     driverProperties.setProperty("useServerPrepStmts", "false");

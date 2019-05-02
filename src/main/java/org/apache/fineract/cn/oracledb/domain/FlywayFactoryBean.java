@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.domain;
+package org.apache.fineract.cn.oracledb.domain;
 
 import org.apache.fineract.cn.lang.ApplicationName;
 import org.flywaydb.core.Flyway;
@@ -35,7 +35,7 @@ public class FlywayFactoryBean {
   public Flyway create(final DataSource dataSource) {
     final Flyway flyway = new Flyway();
     flyway.setDataSource(dataSource);
-    flyway.setLocations("db/migrations/mariadb");
+    flyway.setLocations("db/migrations/oracledb");
     flyway.setTable(this.applicationName.getServiceName() + "_schema_version");
     flyway.setBaselineOnMigrate(true);
     flyway.setBaselineVersionAsString("0");

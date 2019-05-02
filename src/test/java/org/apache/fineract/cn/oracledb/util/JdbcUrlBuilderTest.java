@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.util;
+package org.apache.fineract.cn.oracledb.util;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,10 +29,10 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlUrl() {
-    final String expectedJdbcUrl = "jdbc:mariadb://localhost:3306/comp_test";
+    final String expectedJdbcUrl = "jdbc:oracledb://localhost:3306/comp_test";
 
     final String mariaDbJdbcUrl = JdbcUrlBuilder
-        .create(JdbcUrlBuilder.DatabaseType.MARIADB)
+        .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost")
         .port("3306")
         .instanceName("comp_test")
@@ -43,10 +43,10 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlUrlNoInstance() {
-    final String expectedJdbcUrl = "jdbc:mariadb://localhost:3306";
+    final String expectedJdbcUrl = "jdbc:oracledb://localhost:3306";
 
     final String mariaDbJdbcUrl = JdbcUrlBuilder
-        .create(JdbcUrlBuilder.DatabaseType.MARIADB)
+        .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost")
         .port("3306").build();
 
@@ -55,10 +55,10 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlReplicationUrl() {
-    final String expectedJdbcUrl = "jdbc:mariadb:replication://localhost:3306,anotherhost:3306/comp_test";
+    final String expectedJdbcUrl = "jdbc:oracledb:replication://localhost:3306,anotherhost:3306/comp_test";
 
     final String mariaDbJdbcUrl = JdbcUrlBuilder
-        .create(JdbcUrlBuilder.DatabaseType.MARIADB)
+        .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost, anotherhost")
         .port("3306")
         .instanceName("comp_test")

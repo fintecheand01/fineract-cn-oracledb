@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
@@ -27,22 +27,22 @@ import java.util.Set;
 /**
  * @author Myrle Krantz
  */
-class MariaDBJavaConfigurationImportSelector implements ImportSelector {
+class OracleDBJavaConfigurationImportSelector implements ImportSelector {
   @Override
   public String[] selectImports(AnnotationMetadata importingClassMetadata) {
     final boolean forTenantContext = (boolean)importingClassMetadata
-            .getAnnotationAttributes(EnableMariaDB.class.getTypeName())
+            .getAnnotationAttributes(EnableOracleDB.class.getTypeName())
             .get("forTenantContext");
 
     final Set<Class> classesToImport = new HashSet<>();
-    final String prop = System.getProperty("mariadb.enabled");
+    final String prop = System.getProperty("oracledb.enabled");
     if (prop == null || "true".equals(prop)) {
-      classesToImport.add(MariaDBJavaConfiguration.class);
+      classesToImport.add(OracleDBJavaConfiguration.class);
       if (forTenantContext) {
-        classesToImport.add(MariaDBTenantBasedJavaConfiguration.class);
+        classesToImport.add(OracleDBTenantBasedJavaConfiguration.class);
       }
       else {
-        classesToImport.add(MariaDBTenantFreeJavaConfiguration.class);
+        classesToImport.add(OracleDBTenantFreeJavaConfiguration.class);
       }
     }
     return classesToImport.stream().map(Class::getCanonicalName).toArray(String[]::new);

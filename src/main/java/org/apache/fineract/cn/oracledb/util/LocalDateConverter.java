@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.util;
+package org.apache.fineract.cn.oracledb.util;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

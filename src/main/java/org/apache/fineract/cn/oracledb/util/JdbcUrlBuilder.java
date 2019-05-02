@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.util;
+package org.apache.fineract.cn.oracledb.util;
 
 public final class JdbcUrlBuilder {
 
@@ -52,7 +52,7 @@ public final class JdbcUrlBuilder {
   public String build() {
     final String[] hostList = this.host.split(",");
     switch (this.type) {
-      case MARIADB:
+      case ORACLEDB:
         final StringBuilder jdbcUrl = new StringBuilder();
         final String jdbcProtocol = this.type.prefix() + (hostList.length > 1 ? "replication://" : "//");
         jdbcUrl.append(jdbcProtocol);
@@ -72,7 +72,7 @@ public final class JdbcUrlBuilder {
   }
 
   public enum DatabaseType {
-    MARIADB("jdbc:mariadb:");
+    ORACLEDB("jdbc:oracledb:");
 
     private final String prefix;
 

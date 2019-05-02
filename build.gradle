@@ -63,9 +63,9 @@ dependencies {
     )
 
     //Workaround for bug described here: https://discuss.gradle.org/t/build-failure-when-4-1-0-of-net-java-dev-jna-jna-is-selected-in-place-of-3-3-0-due-to-change-in-artifacts-with-classifiers/9377/3
-    //These two compiled of jna and the exclude under mariadb-java-client may be removable once
+    //These two compiled of jna and the exclude under oracledb-java-client may be removable once
     //the bug is fixed in gradle.
-    compile('org.mariadb.jdbc:mariadb-java-client:1.4.3') {
+    compile('org.oracledb.jdbc:oracledb-java-client:1.4.3') {
         exclude group: 'net.java.dev.jna'
     }
 
@@ -83,7 +83,7 @@ jar {
 
 publishing {
     publications {
-        mariadbPublication(MavenPublication) {
+        oracledbPublication(MavenPublication) {
             from components.java
             groupId project.group
             artifactId project.name

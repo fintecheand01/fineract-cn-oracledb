@@ -16,24 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.util;
+package org.apache.fineract.cn.oracledb.util;
 
-public interface MariaDBConstants {
+public interface OracleDBConstants {
 
-  String LOGGER_NAME = "maridb-logger";
+  String LOGGER_NAME = "oracledb-logger";
 
-  String MARIADB_DRIVER_CLASS_PROP = "mariadb.driverClass";
-  String MARIADB_DRIVER_CLASS_DEFAULT = "org.mariadb.jdbc.Driver";
-  String MARIADB_DATABASE_NAME_PROP = "mariadb.database";
-  String MARIADB_DATABASE_NAME_DEFAULT = "seshat";
-  String MARIADB_HOST_PROP = "mariadb.host";
-  String MARIADB_HOST_DEFAULT = "localhost";
-  String MARIADB_PORT_PROP = "mariadb.port";
-  String MARIADB_PORT_DEFAULT = "3306";
-  String MARIADB_USER_PROP = "mariadb.user";
-  String MARIADB_USER_DEFAULT = "root";
-  String MARIADB_PASSWORD_PROP = "mariadb.password";
-  String MARIADB_PASSWORD_DEFAULT = "mysql";
+  String ORACLEDB_DRIVER_CLASS_PROP = "oracledb.driverClass";
+  String ORACLEDB_DRIVER_CLASS_DEFAULT = "org.oracledb.jdbc.Driver";
+  String ORACLEDB_DATABASE_NAME_PROP = "oracledb.database";
+  String ORACLEDB_DATABASE_NAME_DEFAULT = "seshat";
+  String ORACLEDB_HOST_PROP = "oracledb.host";
+  String ORACLEDB_HOST_DEFAULT = "localhost";
+  String ORACLEDB_PORT_PROP = "oracledb.port";
+  String ORACLEDB_PORT_DEFAULT = "3306";
+  String ORACLEDB_USER_PROP = "oracledb.user";
+  String ORACLEDB_USER_DEFAULT = "root";
+  String ORACLEDB_PASSWORD_PROP = "oracledb.password";
+  String ORACLEDB_PASSWORD_DEFAULT = "mysql";
 
   String BONECP_IDLE_MAX_AGE_PROP = "bonecp.idleMaxAgeInMinutes";
   String BONECP_IDLE_MAX_AGE_DEFAULT = "240";

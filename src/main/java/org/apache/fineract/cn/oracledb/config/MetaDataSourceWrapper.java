@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
 import com.jolbox.bonecp.BoneCPDataSource;
 

@@ -15,4 +15,4 @@
  * limitations under the License.
  */
 
-rootProject.name = 'mariadb'
+rootProject.name = 'oracledb'

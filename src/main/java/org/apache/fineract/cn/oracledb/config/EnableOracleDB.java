@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.mariadb.config;
+package org.apache.fineract.cn.oracledb.config;
 
 import org.springframework.context.annotation.Import;
 
@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({MariaDBJavaConfigurationImportSelector.class})
-public @interface EnableMariaDB {
+@Import({OracleDBJavaConfigurationImportSelector.class})
+public @interface EnableOracleDB {
   boolean forTenantContext() default true;
 }
