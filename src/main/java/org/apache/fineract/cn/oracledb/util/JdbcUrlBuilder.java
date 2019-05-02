@@ -72,7 +72,7 @@ public final class JdbcUrlBuilder {
   }
 
   public enum DatabaseType {
-    ORACLEDB("jdbc:oracledb:");
+    ORACLEDB("jdbc:oracle:thin:@");
 
     private final String prefix;
 

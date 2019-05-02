@@ -23,17 +23,17 @@ public interface OracleDBConstants {
   String LOGGER_NAME = "oracledb-logger";
 
   String ORACLEDB_DRIVER_CLASS_PROP = "oracledb.driverClass";
-  String ORACLEDB_DRIVER_CLASS_DEFAULT = "org.oracledb.jdbc.Driver";
+  String ORACLEDB_DRIVER_CLASS_DEFAULT = "oracle.jdbc.driver.OracleDriver";
   String ORACLEDB_DATABASE_NAME_PROP = "oracledb.database";
   String ORACLEDB_DATABASE_NAME_DEFAULT = "seshat";
   String ORACLEDB_HOST_PROP = "oracledb.host";
   String ORACLEDB_HOST_DEFAULT = "localhost";
   String ORACLEDB_PORT_PROP = "oracledb.port";
-  String ORACLEDB_PORT_DEFAULT = "3306";
+  String ORACLEDB_PORT_DEFAULT = "1521";
   String ORACLEDB_USER_PROP = "oracledb.user";
-  String ORACLEDB_USER_DEFAULT = "root";
+  String ORACLEDB_USER_DEFAULT = "sys";
   String ORACLEDB_PASSWORD_PROP = "oracledb.password";
-  String ORACLEDB_PASSWORD_DEFAULT = "mysql";
+  String ORACLEDB_PASSWORD_DEFAULT = "oracle";
 
   String BONECP_IDLE_MAX_AGE_PROP = "bonecp.idleMaxAgeInMinutes";
   String BONECP_IDLE_MAX_AGE_DEFAULT = "240";

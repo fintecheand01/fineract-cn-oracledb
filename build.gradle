@@ -18,6 +18,13 @@
 buildscript {
     repositories {
         jcenter()
+        maven {  
+            url 'https://www.oracle.com/content/secure/maven/content'  
+            credentials {  
+            username 'devops@fintecheando.mx'  
+            password 'Gusana02'  
+            }  
+        }
     }
 }
 
@@ -50,6 +57,13 @@ tasks.withType(JavaCompile) {
 repositories {
     jcenter()
     mavenLocal()
+    maven {  
+            url 'https://www.oracle.com/content/secure/maven/content'  
+            credentials {  
+            username 'devops@fintecheando.mx'  
+            password 'Gusana02'  
+            }  
+        }
 }
 
 dependencies {
@@ -65,7 +79,7 @@ dependencies {
     //Workaround for bug described here: https://discuss.gradle.org/t/build-failure-when-4-1-0-of-net-java-dev-jna-jna-is-selected-in-place-of-3-3-0-due-to-change-in-artifacts-with-classifiers/9377/3
     //These two compiled of jna and the exclude under oracledb-java-client may be removable once
     //the bug is fixed in gradle.
-    compile('org.oracledb.jdbc:oracledb-java-client:1.4.3') {
+    compile([group: 'com.oracle.jdbc', name: 'ojdbc8', version: '12.2.0.1']) {
         exclude group: 'net.java.dev.jna'
     }
 
