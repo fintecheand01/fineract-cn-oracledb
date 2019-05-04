@@ -29,21 +29,21 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlUrl() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:comp_test";
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
 
-    final String mariaDbJdbcUrl = JdbcUrlBuilder
+    final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost")
         .port("1521")
-        .instanceName("comp_test")
+        .instanceName("ORCLCDB")
         .build();
 
-    Assert.assertEquals(expectedJdbcUrl, mariaDbJdbcUrl);
+    Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 
   @Test
   public void shouldCreateMysqlUrlNoInstance() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:comp_test";
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
 
     final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
@@ -55,15 +55,15 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlReplicationUrl() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:comp_test,jdbc:oracle:thin:@anotherhost:1521:comp_test";
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB,jdbc:oracle:thin:@anotherhost:1521:ORCLCDB";
 
-    final String mariaDbJdbcUrl = JdbcUrlBuilder
+    final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost, anotherhost")
         .port("1521")
-        .instanceName("comp_test")
+        .instanceName("ORCLCDB")
         .build();
 
-    Assert.assertEquals(expectedJdbcUrl, mariaDbJdbcUrl);
+    Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 }
