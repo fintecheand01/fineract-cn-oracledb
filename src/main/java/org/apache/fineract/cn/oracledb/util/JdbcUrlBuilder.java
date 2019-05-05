@@ -54,17 +54,18 @@ public final class JdbcUrlBuilder {
     switch (this.type) {
       case ORACLEDB:
         final StringBuilder jdbcUrl = new StringBuilder();
-        final String jdbcProtocol = this.type.prefix() + (hostList.length > 1 ? "replication://" : "//");
+        final String jdbcProtocol = this.type.prefix();
         jdbcUrl.append(jdbcProtocol);
         for (int i = 0; i < hostList.length; i++) {
-          jdbcUrl.append(hostList[i].trim()).append(":").append(this.port);
-          if ((i + 1) < hostList.length) {
-            jdbcUrl.append(",");
-          }
+          jdbcUrl.append("(ADDRESS=(PROTOCOL=TCP)(HOST=").append(hostList[i].trim()).append(")(PORT=").append(this.port).append("))");          
         }
-        if (this.instanceName != null) {
-          jdbcUrl.append("/").append(this.instanceName);
-        }
+        if (this.instanceName != null && this.instanceName != " " && hostList.length == 1) {
+          jdbcUrl.append(")").append("(CONNECT_DATA=(SID=").append(this.instanceName).append(")(SERVER=DEDICATED))");
+        } 
+        else if (this.instanceName == null && hostList.length == 1){
+          jdbcUrl.append(")").append("(CONNECT_DATA=(SERVER=DEDICATED))");   
+        }     
+        jdbcUrl.append((hostList.length > 1 ? "(FAILOVER=on)(LOAD_BALANCE=ON))(CONNECT_DATA=(SERVER=DEDICATED)(SID="+this.instanceName+")))" : ")"));
         return jdbcUrl.toString();
       default:
         throw new IllegalArgumentException("Unknown database type '" + this.type.name() + "'");
@@ -72,7 +73,7 @@ public final class JdbcUrlBuilder {
   }
 
   public enum DatabaseType {
-    ORACLEDB("jdbc:oracle:thin:@");
+    ORACLEDB("jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=");
 
     private final String prefix;
 

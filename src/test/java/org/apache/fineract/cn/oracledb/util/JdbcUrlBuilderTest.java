@@ -28,8 +28,8 @@ public class JdbcUrlBuilderTest {
   }
 
   @Test
-  public void shouldCreateMysqlUrl() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
+  public void shouldCreateOracleUrl() {
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SID=ORCLCDB)(SERVER=DEDICATED)))";
 
     final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
@@ -37,25 +37,29 @@ public class JdbcUrlBuilderTest {
         .port("1521")
         .instanceName("ORCLCDB")
         .build();
-
+    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 
   @Test
-  public void shouldCreateMysqlUrlNoInstance() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB";
+  public void shouldCreateOracleUrlNoInstance() {
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)))";
 
     final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost")
         .port("1521").build();
-
+    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 
   @Test
-  public void shouldCreateMysqlReplicationUrl() {
-    final String expectedJdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCLCDB,jdbc:oracle:thin:@anotherhost:1521:ORCLCDB";
+  public void shouldCreateOracleReplicationUrl() {
+    final String expectedJdbcUrl = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=" +
+      "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))"+
+      "(ADDRESS=(PROTOCOL=TCP)(HOST=anotherhost)(PORT=1521))"+
+      "(FAILOVER=on)(LOAD_BALANCE=ON))"+
+      "(CONNECT_DATA=(SERVER=DEDICATED)(SID=ORCLCDB)))";
 
     final String oracleDbJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
@@ -63,7 +67,7 @@ public class JdbcUrlBuilderTest {
         .port("1521")
         .instanceName("ORCLCDB")
         .build();
-
+    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 }
