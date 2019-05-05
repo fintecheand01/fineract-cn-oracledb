@@ -134,7 +134,7 @@ public class OracleDBJavaConfiguration {
 
   private Properties additionalProperties() {
     final Properties properties = new Properties();
-    properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+    properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
     return properties;
   }
 }
