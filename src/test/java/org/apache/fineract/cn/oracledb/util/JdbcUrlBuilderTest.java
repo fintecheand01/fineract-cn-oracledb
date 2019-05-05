@@ -37,7 +37,6 @@ public class JdbcUrlBuilderTest {
         .port("1521")
         .instanceName("ORCLCDB")
         .build();
-    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 
@@ -49,7 +48,6 @@ public class JdbcUrlBuilderTest {
         .create(JdbcUrlBuilder.DatabaseType.ORACLEDB)
         .host("localhost")
         .port("1521").build();
-    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 
@@ -67,7 +65,6 @@ public class JdbcUrlBuilderTest {
         .port("1521")
         .instanceName("ORCLCDB")
         .build();
-    System.out.println("ORACLE URL" + oracleDbJdbcUrl);
     Assert.assertEquals(expectedJdbcUrl, oracleDbJdbcUrl);
   }
 }

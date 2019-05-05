@@ -12,3 +12,4 @@ gradle-app.setting
 *.iml
 
 *.log
+/.nb-gradle/
