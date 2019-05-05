@@ -33,7 +33,7 @@ plugins {
     id("org.nosphere.apache.rat") version "0.3.1"
 }
 
-group 'org.apache.fineract.cn'
+group 'com.mx.fintecheando.fineract.cn'
 version '0.1.0-BUILD-SNAPSHOT'
 
 ext.versions = [

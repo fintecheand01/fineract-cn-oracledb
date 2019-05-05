@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.config;
+package com.mx.fintecheando.fineract.cn.oracledb.config;
 
 import org.springframework.context.annotation.Import;
 

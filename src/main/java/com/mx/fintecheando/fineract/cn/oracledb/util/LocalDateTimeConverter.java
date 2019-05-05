@@ -16,30 +16,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.util;
+package com.mx.fintecheando.fineract.cn.oracledb.util;
 
-import org.junit.Assert;
-import org.junit.Test;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import org.apache.fineract.cn.lang.DateConverter;
 
-public class LocalDateConverterTest {
+@Converter
+public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
-  public LocalDateConverterTest() {
+  public LocalDateTimeConverter() {
     super();
   }
 
-  @Test
-  public void shouldConvertLocalDate() {
-    final LocalDateConverter converter = new LocalDateConverter();
+  @Override
+  public Timestamp convertToDatabaseColumn(final LocalDateTime attribute) {
+    if (attribute == null) {
+      return null;
+    } else {
+      return new Timestamp(DateConverter.toEpochMillis(attribute));
+    }
+  }
 
-    final LocalDate expected = LocalDate.of(2017, 1, 1);
-
-    final Date dbDate = converter.convertToDatabaseColumn(expected);
-
-    final LocalDate result = converter.convertToEntityAttribute(dbDate);
-
-    Assert.assertEquals(expected, result);
+  @Override
+  public LocalDateTime convertToEntityAttribute(final Timestamp dbData) {
+    if (dbData == null) {
+      return null;
+    } else {
+      return DateConverter.fromEpochMillis(dbData.getTime());
+    }
   }
 }

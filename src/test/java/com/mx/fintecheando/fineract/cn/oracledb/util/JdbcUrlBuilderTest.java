@@ -16,8 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.util;
+package com.mx.fintecheando.fineract.cn.oracledb.util;
 
+import com.mx.fintecheando.fineract.cn.oracledb.util.JdbcUrlBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 

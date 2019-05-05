@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.domain;
+package com.mx.fintecheando.fineract.cn.oracledb.domain;
 
 @SuppressWarnings("WeakerAccess")
 public final class Tenant {

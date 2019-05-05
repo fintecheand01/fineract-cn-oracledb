@@ -16,24 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.util;
+package com.mx.fintecheando.fineract.cn.oracledb.util;
 
 public interface OracleDBConstants {
 
   String LOGGER_NAME = "oracledb-logger";
 
   String ORACLEDB_DRIVER_CLASS_PROP = "oracledb.driverClass";
-  String ORACLEDB_DRIVER_CLASS_DEFAULT = "oracle.jdbc.driver.OracleDriver";
+  String ORACLEDB_DRIVER_CLASS_DEFAULT = "oracle.jdbc.OracleDriver";
   String ORACLEDB_DATABASE_NAME_PROP = "oracledb.database";
-  String ORACLEDB_DATABASE_NAME_DEFAULT = "seshat";
+  String ORACLEDB_DATABASE_NAME_DEFAULT = "Mifos2019#";
   String ORACLEDB_HOST_PROP = "oracledb.host";
   String ORACLEDB_HOST_DEFAULT = "localhost";
   String ORACLEDB_PORT_PROP = "oracledb.port";
   String ORACLEDB_PORT_DEFAULT = "1521";
   String ORACLEDB_USER_PROP = "oracledb.user";
-  String ORACLEDB_USER_DEFAULT = "sys";
+  String ORACLEDB_USER_DEFAULT = "SYSTEM";
   String ORACLEDB_PASSWORD_PROP = "oracledb.password";
-  String ORACLEDB_PASSWORD_DEFAULT = "oracle";
+  String ORACLEDB_PASSWORD_DEFAULT = "Mifos2019#";
 
   String BONECP_IDLE_MAX_AGE_PROP = "bonecp.idleMaxAgeInMinutes";
   String BONECP_IDLE_MAX_AGE_DEFAULT = "240";

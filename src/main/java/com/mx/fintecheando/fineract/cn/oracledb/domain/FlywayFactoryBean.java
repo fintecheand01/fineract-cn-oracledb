@@ -16,21 +16,29 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.config;
+package com.mx.fintecheando.fineract.cn.oracledb.domain;
 
-import com.jolbox.bonecp.BoneCPDataSource;
+import org.apache.fineract.cn.lang.ApplicationName;
+import org.flywaydb.core.Flyway;
 
-/**
- * @author Myrle Krantz
- */
-public class MetaDataSourceWrapper {
-  private final BoneCPDataSource metaDataSource;
+import javax.sql.DataSource;
 
-  public MetaDataSourceWrapper(final BoneCPDataSource metaDataSource) {
-    this.metaDataSource = metaDataSource;
+public class FlywayFactoryBean {
+
+  private final ApplicationName applicationName;
+
+  public FlywayFactoryBean(final ApplicationName applicationName) {
+    super();
+    this.applicationName = applicationName;
   }
 
-  BoneCPDataSource getMetaDataSource() {
-    return metaDataSource;
+  public Flyway create(final DataSource dataSource) {
+    final Flyway flyway = new Flyway();
+    flyway.setDataSource(dataSource);
+    flyway.setLocations("db/migrations/oracledb");
+    flyway.setTable(this.applicationName.getServiceName() + "_schema_version");
+    flyway.setBaselineOnMigrate(true);
+    flyway.setBaselineVersionAsString("0");
+    return flyway;
   }
 }

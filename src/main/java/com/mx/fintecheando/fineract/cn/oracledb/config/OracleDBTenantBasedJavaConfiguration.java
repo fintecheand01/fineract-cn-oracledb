@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.config;
+package com.mx.fintecheando.fineract.cn.oracledb.config;
 
-import org.apache.fineract.cn.oracledb.domain.ContextAwareRoutingDataSource;
-import org.apache.fineract.cn.oracledb.util.JdbcUrlBuilder;
-import org.apache.fineract.cn.oracledb.util.OracleDBConstants;
+import com.mx.fintecheando.fineract.cn.oracledb.domain.ContextAwareRoutingDataSource;
+import com.mx.fintecheando.fineract.cn.oracledb.util.JdbcUrlBuilder;
+import com.mx.fintecheando.fineract.cn.oracledb.util.OracleDBConstants;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

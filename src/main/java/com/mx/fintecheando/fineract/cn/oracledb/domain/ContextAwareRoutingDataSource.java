@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.cn.oracledb.domain;
+package com.mx.fintecheando.fineract.cn.oracledb.domain;
 
 import com.jolbox.bonecp.BoneCPDataSource;
-import org.apache.fineract.cn.oracledb.util.JdbcUrlBuilder;
-import org.apache.fineract.cn.oracledb.util.OracleDBConstants;
+import com.mx.fintecheando.fineract.cn.oracledb.util.JdbcUrlBuilder;
+import com.mx.fintecheando.fineract.cn.oracledb.util.OracleDBConstants;
 import org.apache.fineract.cn.lang.TenantContextHolder;
-import org.apache.fineract.cn.oracledb.util.JdbcUrlBuilder.DatabaseType;
+import com.mx.fintecheando.fineract.cn.oracledb.util.JdbcUrlBuilder.DatabaseType;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
